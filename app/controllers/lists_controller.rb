@@ -1,14 +1,6 @@
 class ListsController < ApplicationController
 before_action :set_list, only: [ :destroy, :edit, :show, :update ]
   def index
-   # require "json"
-   # require "open-uri"
-
-   # @url = "https://tmdb.lewagon.com/movie/top_rated"
-   # @movie_serialized = URI.parse(@url).read
-   # @movie = JSON.parse(@movie_serialized)
-
-   # @list = @movie
    @lists = List.all
   end
 

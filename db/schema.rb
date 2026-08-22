@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_22_194828) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_22_164600) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -18,13 +18,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_22_194828) do
     t.string "comment"
     t.datetime "created_at", null: false
     t.bigint "list_id", null: false
-    t.integer "movie_id"
+    t.bigint "movie_id", null: false
     t.datetime "updated_at", null: false
     t.index ["list_id"], name: "index_bookmarks_on_list_id"
+    t.index ["movie_id"], name: "index_bookmarks_on_movie_id"
   end
 
   create_table "lists", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.string "list_url"
     t.string "name"
     t.datetime "updated_at", null: false
   end
@@ -41,5 +43,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_22_194828) do
   end
 
   add_foreign_key "bookmarks", "lists"
+  add_foreign_key "bookmarks", "movies"
   add_foreign_key "movies", "lists"
 end

@@ -1,11 +1,13 @@
 <div class="container m-5">
   <h1>Movies lists</h1>
   <hr>
-  <%= link_to "+", lists_create_path, class:"btn btn-success" %>
-  <div class="cards">
+  <%= link_to "+", lists_new_path, class:"btn btn-success" %>
+  <div class="cards m-5">
     <% @lists.each do |list| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path(list.list_url) %>')">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= list.list_url %>')">
       <%= list.name %>
+      <%= link_to ">", lists_show_path(@list), class: "btn btn-basic" %>
+      <%= link_to "Delete", lists_path(@list), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
     <% end %>
     </div>
   </div>
