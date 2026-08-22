@@ -1,2 +1,11 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<div class="container m-5">
+  <div class="movie">
+    <img src=<%= @movie.poster_url %> />
+    <div class="movie-infos">
+      <h2><%= @movie.title %> | <strong><%= @movie.rating %></strong></h2>
+      <hr>
+      <p><%= @movie.overview %></p>
+    </div>
+  </div>
+  <%= link_to "Back to list", list_path(@list) %>
+</div>

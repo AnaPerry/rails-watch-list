@@ -1,10 +1,7 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [ :destroy, :edit, :show, :update ]
+  before_action :set_movie, only: [ :destroy, :edit, :update ]
   def index
     @movies = Movie.all
-  end
-
-  def show
   end
 
   def update
@@ -32,8 +29,10 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    @movie.destroy
-    redirect_to list_path(@movie.list), status: :see_other
+    if @movie.bookmarks.nil?
+      @movie.destroy
+      redirect_to list_path(@movie.list), status: :see_other
+    end
   end
 
   private

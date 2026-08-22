@@ -30,8 +30,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "lists#index"
   resources :lists, except: [ :index ] do
-    resources :movies
-    resources :bookmarks, only: [ :new, :create, :show ]
+    resources :movies, except: [ :show ]
+    resources :bookmarks, only: [ :new, :create ]
   end
   resources :bookmarks, only: [ :destroy ]
 end

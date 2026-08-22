@@ -1,5 +1,5 @@
 class List < ApplicationRecord
-  has_many :movies, dependent: :destroy
+  has_many :movies
   has_many :bookmarks, dependent: :destroy
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 end
